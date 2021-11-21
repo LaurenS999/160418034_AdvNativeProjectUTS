@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -38,9 +40,9 @@ class RecipeListFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
+
         ViewModel = ViewModelProvider(this).get(RecipeListModel::class.java)
         ViewModel.refresh()
-
         recViewRecipeList.layoutManager = LinearLayoutManager(context)
         recViewRecipeList.adapter = recipeListAdapter
 
@@ -58,6 +60,11 @@ class RecipeListFragment : Fragment() {
     fun observeViewModel(){
         ViewModel.RecipeLD.observe(viewLifecycleOwner, Observer {
             recipeListAdapter.updateRecipeList(it)
+            if(it.isEmpty()) {
+                txtEmpty.visibility = View.VISIBLE
+            } else {
+                txtEmpty.visibility = View.GONE
+            }
         })
 
         ViewModel.RecipeLoadErrorLD.observe(viewLifecycleOwner, Observer {

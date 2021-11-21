@@ -11,8 +11,8 @@ class KategoriModel: ViewModel() {
     val loadingLD = MutableLiveData<Boolean>()
 
     fun refresh() {
-        val kategori1 = Kategori("1", "Ayam")
-        val kategori2 = Kategori("2", "Nasi")
+        val kategori1 = Kategori("Ayam")
+        val kategori2 = Kategori( "Nasi")
 
         val KategoriList:ArrayList<Kategori> = arrayListOf<Kategori>(kategori1,kategori2)
 

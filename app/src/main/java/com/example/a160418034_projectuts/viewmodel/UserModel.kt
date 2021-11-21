@@ -8,7 +8,7 @@ class UserModel: ViewModel() {
     val UserLD = MutableLiveData<User>()
 
     fun fetch() {
-        val user1 = User("1", "Lauren","123","Basuki Rahmat","123456789", "http://dummyimage.com/75x100.jpg/5fa2dd/ffffff")
+        val user1 = User( "Lauren","123","Basuki Rahmat","123456789", "http://dummyimage.com/75x100.jpg/5fa2dd/ffffff")
         UserLD.value = user1
     }
 

@@ -3,6 +3,7 @@ package com.example.a160418034_projectuts.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160418034_projectuts.R
@@ -28,7 +29,7 @@ class RecipeListAdapter(val recipeList: ArrayList<Recipe>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-            holder.view.txtNamaRecipe.text = recipeList[position].name
+        holder.view.txtNamaRecipe.text = recipeList[position].name
             holder.view.txtDescription.text = recipeList[position].description
 
             holder.view.imageView.loadImage(recipeList[position].photoUrl,
@@ -42,4 +43,11 @@ class RecipeListAdapter(val recipeList: ArrayList<Recipe>): RecyclerView.Adapter
     override fun getItemCount(): Int {
         return recipeList.size
     }
+
+    fun updateTodoList(newRecipeList: List<Recipe>) {
+        recipeList.clear()
+        recipeList.addAll(newRecipeList)
+        notifyDataSetChanged()
+    }
+
 }
